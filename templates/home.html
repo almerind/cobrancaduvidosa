@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <TITle>ML api</TITle>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link= href='https://fonts.googleapis.com/css/css?family=Arimo' rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Conden" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="login">
+<h1>Concessao de Credito!!</h1>
+
+<form action="{{ url_for('predict')}}" method="post">
+    <label>NR_PRESTACOES</label> <input type="text" name="NR_PRESTACOES" placeholder="NR_PRESTACOES" required="required" value="0"/>
+    <label>NR_PREST_PAGAS_ATRASO</label><input type="text" name="NR_PREST_PAGAS_ATRASO" placeholder="NR_PREST_PAGAS_ATRASO" required="required" value="0"><br>
+    <label>NR_PREST_PAGAS_SEM_ATRASO</label><input type="text" name="NR_PREST_PAGAS_SEM_ATRASO" placeholder="NR_PREST_PAGAS_SEM_ATRASO" required="required" value="0"/>
+    <label>NR_PREST_NAO_PAGAS_SEM_ATRASO</label><input type="text" name="NR_PREST_NAO_PAGAS_SEM_ATRASO" placeholder="NR_PREST_NAO_PAGAS_SEM_ATRASO" required="required" value="0"><br>
+    <label>TIPOCREDITO_1</label><input type="text" name="TIPOCREDITO_1" placeholder="TIPOCREDITO_1" required="required" value="0"/>
+    <label>TIPOCREDITO_2</label><input type="text" name="TIPOCREDITO_2" placeholder="TIPOCREDITO_2" required="required" value="0"/><br>
+    <label>PRAZO</label><input type="text" name="PRAZO" placeholder="PRAZO" required="required" value="0"><br>
+    <label>CAPACIDADEENDIVIDAMENTO_1</label><input type="text" name="CAPACIDADEENDIVIDAMENTO_1" placeholder="CAPACIDADEENDIVIDAMENTO_1" required="required" value="0"/>
+    <label>CAPACIDADEENDIVIDAMENTO_2</label><input type="text" name="CAPACIDADEENDIVIDAMENTO_2" placeholder="CAPACIDADEENDIVIDAMENTO_2" required="required" value="0"><br>
+    <label>VALORCREDITO</label><input type="text" name="VALORCREDITO" placeholder="VALORCREDITO" required="required" value="0"/>
+    <label>VALORPRESTACAO</label><input type="text" name="VALORPRESTACAO" placeholder="VALORPRESTACAO" required="required" value="0">
+    <br>
+    <label>PAIS</label><br><label>_1</label><input type="text" name="PAIS_1" placeholder="PAIS_1" required="required" value="0"/>
+    <label>_2</label><input type="text" name="PAIS_2" placeholder="PAIS_2" required="required" value="0"><br>
+    <label>_3</label><input type="text" name="PAIS_3" placeholder="PAIS_3" required="required" value="0">
+    <label>_4</label><input type="text" name="PAIS_4" placeholder="PAIS_4" required="required" value="0"/>
+    <label>_5</label><input type="text" name="PAIS_5" placeholder="PAIS_5" required="required" value="0"><br>
+    <label>PROVINCIA</label><br>
+    <label>_1</label><input type="text" name="PROVINCIA_1" placeholder="PROVINCIA_1" required="required" value="0"/>
+    <label>_2</label><input type="text" name="PROVINCIA_2" placeholder="PROVINCIA_2" required="required" value="0"><br>
+    <label>_3</label><input type="text" name="PROVINCIA_3" placeholder="PROVINCIA_3" required="required" value="0">
+    <label>_4</label><input type="text" name="PROVINCIA_4" placeholder="PROVINCIA_4" required="required" value="0"><br>
+    <label>_5</label><input type="text" name="PROVINCIA_5" placeholder="PROVINCIA_5" required="required" value="0">
+    <label>_6</label><input type="text" name="PROVINCIA_6" placeholder="PROVINCIA_6" required="required" value="0"><br>
+    <label>_7</label><input type="text" name="PROVINCIA_7" placeholder="PROVINCIA_7" required="required" value="0">
+    <label>_8</label><input type="text" name="PROVINCIA_8" placeholder="PROVINCIA_8" required="required" value="0"><br>
+    <label>_9</label><input type="text" name="PROVINCIA_9" placeholder="PROVINCIA_9" required="required" value="0"><br>
+    <label>HABILITACOES</label><input type="text" name="HABILITACOES" placeholder="HABILITACOES" required="required" value="0"><br>
+    <label>SEXO</label><br><label>_1</label><input type="text" name="SEXO_1" placeholder="SEXO_1" required="required" value="0">
+    <label>_2</label><input type="text" name="SEXO_2" placeholder="SEXO_2" required="required" value="0">
+    <label>_3</label><input type="text" name="SEXO_3" placeholder="SEXO_3" required="required" value="0"><br>
+    <label>GRADUADO</label><br><label>_1</label><input type="text" name="GRADUADO_1" placeholder="GRADUADO_1" required="required" value="0">
+    <label>_2</label><input type="text" name="GRADUADO_2" placeholder="GRADUADO_2" required="required" value="0"><br>
+    <label>PROFISSAO</label><input type="text" name="PROFISSAO" placeholder="PROFISSAO" required="required" value="0"><br>
+    <label>CATEGORIAPROFISSIONAL_1</label><input type="text" name="CATEGORIAPROFISSIONAL_1" placeholder="CATEGORIAPROFISSIONAL_1" required="required" value="0">
+    <label>_2</label><input type="text" name="CATEGORIAPROFISSIONAL_16" placeholder="CATEGORIAPROFISSIONAL_16" required="required" value="0"><br>
+    <label>_3</label><input type="text" name="CATEGORIAPROFISSIONAL_2" placeholder="CATEGORIAPROFISSIONAL_2" required="required" value="0"><br>
+    <label>_4</label><input type="text" name="CATEGORIAPROFISSIONAL_3" placeholder="CATEGORIAPROFISSIONAL_3" required="required" value="0">
+    <label>_5</label><input type="text" name="CATEGORIAPROFISSIONAL_4" placeholder="CATEGORIAPROFISSIONAL_4" required="required" value="0"><br>
+    <label>_6</label><input type="text" name="CATEGORIAPROFISSIONAL_5" placeholder="CATEGORIAPROFISSIONAL_5" required="required" value="0">
+    <label>_7</label><input type="text" name="CATEGORIAPROFISSIONAL_6" placeholder="CATEGORIAPROFISSIONAL_6" required="required" value="0"><br>
+    <label>_8</label><input type="text" name="CATEGORIAPROFISSIONAL_7" placeholder="CATEGORIAPROFISSIONAL_7" required="required" value="0">
+    <label>_9</label><input type="text" name="CATEGORIAPROFISSIONAL_8" placeholder="CATEGORIAPROFISSIONAL_8" required="required" value="0"><br>
+    <label>_10</label><input type="text" name="CATEGORIAPROFISSIONAL_9" placeholder="CATEGORIAPROFISSIONAL_9" required="required" value="0">
+    <label>_11</label><input type="text" name="CATEGORIAPROFISSIONAL_10" placeholder="CATEGORIAPROFISSIONAL_10" required="required" value="0"><br>
+    <label>_12</label><input type="text" name="CATEGORIAPROFISSIONAL_11" placeholder="CATEGORIAPROFISSIONAL_11" required="required" value="0">
+    <label>_13</label><input type="text" name="CATEGORIAPROFISSIONAL_12" placeholder="CATEGORIAPROFISSIONAL_12" required="required" value="0"><br>
+    <label>_14</label><input type="text" name="CATEGORIAPROFISSIONAL_13" placeholder="CATEGORIAPROFISSIONAL_13" required="required" value="0">
+    <label>_15</label><input type="text" name="CATEGORIAPROFISSIONAL_14" placeholder="CATEGORIAPROFISSIONAL_14" required="required" value="0"><br>
+    <label>_16</label><input type="text" name="CATEGORIAPROFISSIONAL_15" placeholder="CATEGORIAPROFISSIONAL_15" required="required" value="0">
+    <label>TIPOCLIENTE_1</label><input type="text" name="TIPOCLIENTE_1" placeholder="TIPOCLIENTE_1" required="required" value="0">
+    <label>_2</label><input type="text" name="TIPOCLIENTE_2" placeholder="TIPOCLIENTE_2" required="required" value="0"><br>
+    <label>RENDAMENSAL</label><input type="text" name="RENDAMENSAL" placeholder="RENDAMENSAL" required="required" value="0">
+    <label>RENDAANUAL</label><input type="text" name="RENDAANUAL" placeholder="RENDAANUAL" required="required" value="0"><br>
+    <label>IDADE</label><input type="text" name="IDADE" placeholder="IDADE" required="required" value="0"><br>
+    <label>ESTADOCIVIL_1</label><input type="text" name="ESTADOCIVIL_1" placeholder="ESTADOCIVIL_1" required="required" value="0">
+    <label>_2</label><input type="text" name="ESTADOCIVIL_2" placeholder="ESTADOCIVIL_2" required="required" value="0"><br>
+    <label>_3</label><input type="text" name="ESTADOCIVIL_3" placeholder="ESTADOCIVIL_3" required="required" value="0">
+    <label>_4</label><input type="text" name="ESTADOCIVIL_4" placeholder="ESTADOCIVIL_4" required="required" value="0"><br>
+    <label>_5</label><input type="text" name="ESTADOCIVIL_5" placeholder="ESTADOCIVIL_5" required="required" value="0">
+    <label>_6</label><input type="text" name="ESTADOCIVIL_6" placeholder="ESTADOCIVIL_6" required="required" value="0">
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+</form>
+
+<br>
+<br>
+
+</div>
+{{prediction_text}}
+
+</body>
+
+</html>

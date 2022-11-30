@@ -3,11 +3,19 @@ from django.shortcuts import render
 from flask import Flask,request,app,jsonify,url_for,render_template
 import numpy as np
 import pandas as pd
+import json
 
 app=Flask(__name__)
 ## Load the model
-regmodel = pickle.load(open('regmodelOHE.pkl'))
-scalar = pickle.load(open('scalarOHE.pkl'))
+
+with open('regmodelOHE.pkl', 'rb') as f:
+    regmodel = pickle.load(f)
+
+with open('scalerOHEF.pkl', 'rb') as k:
+    scalar = pickle.load(k)
+
+# regmodel = pickle.load(open('regmodelOHE.pkl'))
+# scalar = pickle.load(open('scalarOHE.pkl'))
 
 @app.route('/')
 def home():
@@ -21,7 +29,16 @@ def predict_api():
     new_data = scalar.transform(np.array(list(data.values())).reshape(1,-1))
     output=regmodel.predict(new_data)
     print(output[0])
-    return jsonify(output[0])
+    return json.dumps(output[0], default=str)
+    # return jsonify(output[0])
+
+@app.route('/predict', methods=['POST']) 
+def predict():
+    data=[float(x) for x in request.form.values()]
+    final_input=scalar.transform(np.array(data).reshape(1,-1))
+    print(final_input)
+    output = regmodel.predict(final_input)[0]
+    return render_template("home.html",prediction_text="Loan System!! {} ".format(output))
 
 if __name__=="__main__":
     app.run(debug=True)
