@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <TITle>ML api</TITle>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css/css?family=Arimo' rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Conden" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+<div class="login">
+<h1>Concessao de Credito!!</h1>
+<form action="{{ url_for('predict')}}" method="post">
+
+   <label>MONTANTE</label> <input type="number" name="MONTANTE"         placeholder="MONTANTE"  required="required" value="0"/>
+   <label>TAXA_JUROS</label><input type="number" name="TAXA_JUROS" placeholder="TAXA_JUROS" required="required" value="0">
+   <label>PRAZO</label><input type="number" name="PRAZO" placeholder="TAXA_JUROS" required="required" value="0">
+   <label>IDADE</label><input type="number" name="IDADE" placeholder="TAXA_JUROS" required="required" value="0">
+   <label>TIPOCLIENTE</label>
+    <select name="TIPOCLIENTE" id="cars">
+        <option value="0">Escolhe</option>
+        <option value="1">SINGULAR</option>
+        <option value="2">EMPRESA</option>
+      </select>
+
+      <label>SEXO</label>
+      <select name="SEXO" id="sexo">
+        <option value="0">Escolhe</option>
+        <option value="1">Femenino</option>
+        <option value="2">Masculino</option>
+        <option value="3">Empresa</option>
+      </select>
+
+      <label>PAIS</label>
+      <select name="PAIS" id="pais">
+        <option value="0">Escolhe</option>
+        <option value="1">MOCAMBIQUE</option>
+        <option value="2">AFRICA DO SUL</option>
+        <option value="3">SUICA</option>
+        <option value="4">NAMIBIA</option>
+      </select>
+
+      <label>PROVINCIA</label>
+      <select name="PROVINCIA" id="provincia">
+        <option value="0">Escolhe</option>
+        <option value="1">SINGULAR</option>
+        <option value="2">EMPRESA</option>
+      </select>
+
+      <label>ESTADOCIVIL</label>
+      <select name="TIPOCLIENTE" id="cars">
+        <option value="0">Escolhe</option>
+        <option value="1">SOLTEIRO</option>
+        <option value="2">CASADO</option>
+        <option value="3">VIUVO</option>
+        <option value="4">DIVORCIADO</option>
+        <option value="5">SEPARADO</option>
+      </select>
+
+      <label>PROFISSAO</label>
+      <select name="PROFISSAO" id="cars">
+<option value="1">Academico</option>
+<option value="2">Gerente</option>
+<option value="3">Comerciante</option>
+<option value="4">Gerente Restaurante</option>
+<option value="5">Construçao Civil</option>
+<option value="6">Comercio Grossista</option>
+<option value="7">Carpinteiro</option>
+<option value="8">Domestico</option>
+<option value="9">Restauraçao e Hotel</option>
+<option value="10">Canalizador</option>
+<option value="11">Pintor</option>
+<option value="12">Bate-chapa</option>
+<option value="13">Bancario</option>
+<option value="14">Enfermeiro</option>
+<option value="15">Medico</option>
+<option value="16">Director construçao</option>
+<option value="17">Retalhista</option>
+<option value="18">Director Trasportes</option>
+<option value="19">Motorista</option>
+<option value="20">Policia</option>
+<option value="21">Advogado</option>
+<option value="22">Jurista</option>
+<option value="23">Economista</option>
+<option value="24">Professor</option>
+<option value="25">Secretario</option>
+<option value="26">Farmaceutico</option>
+<option value="27">Musico</option>
+<option value="28">Promotor Eventos</option>
+<option value="29">Guarda</option>
+<option value="30">Cientista</option>
+<option value="31">Nenhum</option>
+<option value="32">Empresário</option>
+<option value="33">Empresária</option>
+<option value="34">Desportista</option>
+<option value="35">Atleta</option>
+<option value="36">Hospideiras</option>
+<option value="37">Funcionário público</option>
+<option value="38">Militar</option>
+<option value="39">Agronimo</option>
+<option value="40">Veterinário</option>
+<option value="41">Contabilista</option>
+<option value="42">Doctor</option>
+<option value="43">Pastor</option>
+<option value="44">Padre</option>
+<option value="45">Promotor de vendas</option>
+<option value="46">Proprietário</option>
+<option value="47">Piloto</option>
+<option value="48">Analista Financeira</option>
+<option value="49">Analista Financeiro</option>
+<option value="50">Tecnico Informatico</option>
+<option value="51">Directora Executiva</option>
+<option value="52">Director Executivo</option>
+<option value="53">GESTOR DE CLIENTES</option>
+<option value="54">tecnico</option>
+<option value="55">director d operacoes</option>
+<option value="56">Assis.Administrativa</option>
+<option value="57">gestor de RH</option>
+<option value="58">Director informatico</option>
+<option value="59">Informatica e gestao</option>
+<option value="60">Tecnica comercial</option>
+<option value="61">Agente de limpeza</option>
+<option value="62">Chefe de limpeza</option>
+<option value="63">Recepcionista</option>
+<option value="64">Logistica</option>
+<option value="65">Ciências Políticas</option>
+<option value="66">Gestor de Crédito</option>
+      </select>
+
+      <label>TIPOCLIENTE</label>
+      <select name="TIPOCLIENTE" id="cars">
+        <option value="0">Escolhe</option>
+        <option value="1">SINGULAR</option>
+        <option value="2">EMPRESA</option>
+      </select>
+
+      <label>TIPOCLIENTE</label>
+      <select name="TIPOCLIENTE" id="cars">
+        <option value="0">Escolhe</option>
+        <option value="1">SINGULAR</option>
+        <option value="2">EMPRESA</option>
+      </select>
+      <label>TIPOCLIENTE</label>
+      <select name="TIPOCLIENTE" id="cars">
+        <option value="0">Escolhe</option>
+        <option value="1">SINGULAR</option>
+        <option value="2">EMPRESA</option>
+      </select>
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+</form>
+</div>
+{{prediction_text}}
+</body>
+</html>
