@@ -9,3 +9,5 @@ staging:
     - git push -f heroku develop:master
   only:
     - develop
+  run:
+    web: gunicorn bookstore_project.wsgi
