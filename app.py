@@ -19,7 +19,7 @@ with open('scalerOHEF.pkl', 'rb') as k:
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home3.html')
 
 @app.route('/predict_api', methods=['POST'])
 def predict_api():
@@ -45,7 +45,7 @@ def predict():
     final_input=scalar.transform(np.array(data).reshape(1,-1))
     print(final_input)
     output = regmodel.predict(final_input)[0]
-    return render_template("home.html",prediction_text="Loan System!! {} ".format(output))
+    return render_template("home3.html",prediction_text="Loan System!! {} ".format(output))
     
 if __name__=="__main__":
     app.run(debug=True)

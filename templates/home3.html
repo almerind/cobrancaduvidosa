@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Form-v10 by Colorlib</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/montserrat-font.css">
+	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<!-- Main Style Css -->
+    <!-- <link rel="stylesheet" href="css/style.css"/> -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/montserrat-font.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body class="form-v10">
+	<div class="page-content">
+		<div class="form-v10-content">
+			<form class="form-detail" action="{{ url_for('predict')}}" method="post" id="myform">
+				<div class="form-left">
+					<h2>Detalhes do Credito</h2>
+					
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<input type="number" name="MONTANTE" id="MONTANTE" class="input-text" placeholder="Montante" required>
+						</div>
+						<div class="form-row form-row-2">
+							<input type="number" name="TAXA_JUROS" id="TAXA_JUROS" class="input-text" placeholder="TAXA JUROS" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<input type="number" name="PRAZO" id="PRAZO" class="input-text" placeholder="PRAZO DO CREDITO" required>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<select name="TIPO_CREDITO">
+						    <option class="option" value="0">Tipo de Credito</option>
+						    <option class="option" value="1">Credja</option>
+						    <option class="option" value="2">Credito Consumo</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+
+					<div class="form-row">
+						<select name="TIPO_CLIENTE">
+						    <option class="option" value="0">Tipo de Cliente</option>
+						    <option class="option" value="1">Singular</option>
+						    <option class="option" value="2">Empresa</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<!-- <div class="form-row">
+						<select name="position">
+						    <option value="position">Position</option>
+						    <option value="director">Director</option>
+						    <option value="manager">Manager</option>
+						    <option value="employee">Employee</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<div class="form-row">
+						<input type="text" name="company" class="company" id="company" placeholder="Company" required>
+					</div>
+					<div class="form-group">
+						<div class="form-row form-row-3">
+							<input type="text" name="business" class="business" id="business" placeholder="Business Arena" required>
+						</div>
+						<div class="form-row form-row-4">
+							<select name="employees">
+							    <option value="employees">Employees</option>
+							    <option value="trainee">Trainee</option>
+							    <option value="colleague">Colleague</option>
+							    <option value="associate">Associate</option>
+							</select>
+							<span class="select-btn">
+							  	<i class="zmdi zmdi-chevron-down"></i>
+							</span>
+						</div>
+					</div> -->
+				</div>
+				<div class="form-right">
+					<h2>Detalhes Pessoais</h2>
+					<!-- <div class="form-row">
+						<input type="text" name="street" class="street" id="street" placeholder="Street + Nr" required>
+					</div>
+					<div class="form-row">
+						<input type="text" name="additional" class="additional" id="additional" placeholder="Additional Information" required>
+					</div> -->
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<input type="number" name="IDADE" class="zip" id="zip" placeholder="Idade" required>
+						</div>
+						<div class="form-row form-row-2">
+							<select name="SEXO">
+							    <option value="0">Sexo</option>
+							    <option value="1">Masculino</option>
+							    <option value="2">Femenino</option>
+							    <option value="4">Outros</option>
+							</select>
+							<span class="select-btn">
+							  	<i class="zmdi zmdi-chevron-down"></i>
+							</span>
+						</div>
+					</div>
+					<div class="form-row">
+						<select name="ESTADO_CIVIL">
+						    <option value="0">Estado Civil</option>
+						    <option value="1">Solteiro</option>
+						    <option value="2">Casado</option>
+						    <option value="3">Viuvo</option>
+						    <option value="4">Divorciado</option>
+						    <option value="5">Separado</option>
+						    <!-- <option value="3">Suica</option> -->
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+
+					<!-- <div class="form-row">
+						
+						<select name="country">
+						    <option value="0">Pais</option>
+						    <option value="1">Mocambique</option>
+						    <option value="2">Outro</option>
+						     <option value="3">Suica</option> 
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<div class="form-row">
+					<select name="country">
+						<option value="0">Provincia</option>
+						<option value="1">Maputo</option>
+						<option value="2">Gaza</option>
+						<option value="3">Inhambane</option>
+						 <option value="3">Suica</option> 
+					</select>
+					<span class="select-btn">
+						<i class="zmdi zmdi-chevron-down"></i>
+				  </span>
+					</div> -->
+
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<select name="PAIS">
+								<option value="0">Pais</option>
+								<option value="1">Mocambique</option>
+								<option value="2">Outro</option>
+								<!-- <option value="3">Suica</option> -->
+							</select>
+							<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						  </span>
+						</div>
+
+						<div class="form-row form-row-2">
+							<select name="PROVINCIA">
+								<option value="0">Provincia</option>
+								<option value="1">Maputo</option>
+								<option value="2">Gaza</option>
+								<option value="3">Inhambane</option>
+								<!-- <option value="3">Suica</option> -->
+							</select>
+							<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						  </span>
+						</div>
+					</div>					
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<select name="HABILITACOES">
+								<option value="0">Habilitacoes</option>
+								<option value="1">	Sem Escolaridade</option>
+								<option value="2">	Ensino Primário</option>
+								<option value="3">	Ensino Secundário</option>
+								<option value="4">	Pré-Universitário</option>
+								<option value="5">	Bacharel</option>
+								<option value="6">	Licenciado</option>
+								<option value="7">	Doutorado</option>
+								<option value="8">	Nenhum</option>
+								<option value="9">	12</option>
+								<option value="10">	Mestrado</option>
+							</select>
+							<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						  </span>
+						</div>
+
+						<div class="form-row form-row-2">
+							<select name="PROFISSAO">
+								<option value="0">Profissao</option>
+								<option value="1">Academico</option>
+                                <option value="2">Gerente</option>
+                                <option value="3">Comerciante</option>
+                                <option value="4">Gerente Restaurante</option>
+                                <option value="5">Construçao Civil</option>
+                                <option value="6">Comercio Grossista</option>
+                                <option value="7">Carpinteiro</option>
+                                <option value="8">Domestico</option>
+                                <option value="9">Restauraçao e Hotel</option>
+                                <option value="10">Canalizador</option>
+                                <option value="11">Pintor</option>
+                                <option value="12">Bate-chapa</option>
+                                <option value="13">Bancario</option>
+                                <option value="14">Enfermeiro</option>
+                                <option value="15">Medico</option>
+                                <option value="16">Director construçao</option>
+                                <option value="17">Retalhista</option>
+                                <option value="18">Director Trasportes</option>
+                                <option value="19">Motorista</option>
+                                <option value="20">Policia</option>
+                                <option value="21">Advogado</option>
+                                <option value="22">Jurista</option>
+                                <option value="23">Economista</option>
+                                <option value="24">Professor</option>
+                                <option value="25">Secretario</option>
+                                <option value="26">Farmaceutico</option>
+                                <option value="27">Musico</option>
+                                <option value="28">Promotor Eventos</option>
+                                <option value="29">Guarda</option>
+                                <option value="30">Cientista</option>
+                                <option value="31">Nenhum</option>
+                                <option value="32">Empresário</option>
+                                <option value="33">Empresária</option>
+                                <option value="34">Desportista</option>
+                                <option value="35">Atleta</option>
+                                <option value="36">Hospideiras</option>
+                                <option value="37">Funcionário público</option>
+                                <option value="38">Militar</option>
+                                <option value="39">Agronimo</option>
+                                <option value="40">Veterinário</option>
+                                <option value="41">Contabilista</option>
+                                <option value="42">Doctor</option>
+                                <option value="43">Pastor</option>
+                                <option value="44">Padre</option>
+                                <option value="45">Promotor de vendas</option>
+                                <option value="46">Proprietário</option>
+                                <option value="47">Piloto</option>
+                                <option value="48">Analista Financeira</option>
+                                <option value="49">Analista Financeiro</option>
+                                <option value="50">Tecnico Informatico</option>
+                                <option value="51">Directora Executiva</option>
+                                <option value="52">Director Executivo</option>
+                                <option value="53">GESTOR DE CLIENTES</option>
+                                <option value="54">tecnico</option>
+                                <option value="55">director d operacoes</option>
+                                <option value="56">Assis.Administrativa</option>
+                                <option value="57">gestor de RH</option>
+                                <option value="58">Director informatico</option>
+                                <option value="59">Informatica e gestao</option>
+                                <option value="60">Tecnica comercial</option>
+                                <option value="61">Agente de limpeza</option>
+                                <option value="62">Chefe de limpeza</option>
+                                <option value="63">Recepcionista</option>
+                                <option value="64">Logistica</option>
+                                <option value="65">Ciências Políticas</option>
+                                <option value="66">Gestor de Crédito</option>
+		</select>
+							<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						  </span>
+						</div>
+
+
+					</div>
+							<div class="form-row ">
+							<select name="GRADUADO">
+								<option value="">Graduado</option>
+								<option value="1">Sim</option>
+								<option value="0">Nao</option>
+								<!-- <option value="3">Suica</option> -->
+							</select>
+							<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						  </span>
+						</div>
+					<!-- <div class="form-row">
+						<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
+					</div> -->
+
+					<!-- <div class="form-checkbox">
+						<label class="container"><p>I do accept the <a href="#" class="text">Terms and Conditions</a> of your site.</p>
+						  	<input type="checkbox" name="checkbox">
+						  	<span class="checkmark"></span>
+						</label>
+					</div> -->
+
+					<div class="form-row-last">
+						<input type="submit" name="register" class="register" value="PREDIZER">
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+    {{prediction_text}}
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
