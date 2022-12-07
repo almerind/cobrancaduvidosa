@@ -11,3 +11,7 @@ staging:
     - develop
   run:
     web: gunicorn bookstore_project.wsgi
+
+build:
+  docker:
+    web: Dockerfile
