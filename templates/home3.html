@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Form-v10 by Colorlib</title>
+	<title>Sistema de Avaliacao de Cliente de Cobranca Duvidosa</title>
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
@@ -12,8 +12,8 @@
     <!-- <link rel="stylesheet" href="css/style.css"/> -->
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/montserrat-font.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/montserrat-font.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
     
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -23,7 +23,9 @@
 			<form class="form-detail" action="{{ url_for('predict')}}" method="post" id="myform">
 				<div class="form-left">
 					<h2>Detalhes do Credito</h2>
-					
+					<div class="form-row">
+						<input type="number" name="CODIGOCLIENTE" class="zip" id="zip" placeholder="CODIGOCLIENTE" value="99999" required>
+					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
 							<input type="number" name="MONTANTE" id="MONTANTE" class="input-text" placeholder="Montante" required>
@@ -40,37 +42,39 @@
 
 					<div class="form-row">
 						<select name="TIPO_CREDITO">
-						    <option class="option" value="0">Tipo de Credito</option>
-						    <option class="option" value="1">Credja</option>
-						    <option class="option" value="2">Credito Consumo</option>
+						    <option class="option"  value="2">Tipo de Credito</option>
+						    <option class="option" value="0">Credja</option>
+						    <option class="option" value="1">Credito Consumo</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<!-- <label>Tipo de Cliente</label> -->
+					<div class="form-row">
+						
+						<select name="TIPO_CLIENTE">
+						    <option class="option" value="">Tipo de Cliente</option>
+						    <option class="option" value="1">Singular</option>
+						    <option class="option" value="0">Empresa</option>
 						</select>
 						<span class="select-btn">
 						  	<i class="zmdi zmdi-chevron-down"></i>
 						</span>
 					</div>
 
+
 					<div class="form-row">
-						<select name="TIPO_CLIENTE">
-						    <option class="option" value="0">Tipo de Cliente</option>
-						    <option class="option" value="1">Singular</option>
-						    <option class="option" value="2">Empresa</option>
-						</select>
-						<span class="select-btn">
+						<input type="number" name="DESPESAS" class="zip" id="zip" placeholder="DESPESAS" value="0" required>
+					</div>
+					
+					 <div class="form-row">
+						{{prediction_text}}
+						<!-- <span class="select-btn">
 						  	<i class="zmdi zmdi-chevron-down"></i>
-						</span>
+						</span> -->
 					</div>
 					<!-- <div class="form-row">
-						<select name="position">
-						    <option value="position">Position</option>
-						    <option value="director">Director</option>
-						    <option value="manager">Manager</option>
-						    <option value="employee">Employee</option>
-						</select>
-						<span class="select-btn">
-						  	<i class="zmdi zmdi-chevron-down"></i>
-						</span>
-					</div>
-					<div class="form-row">
 						<input type="text" name="company" class="company" id="company" placeholder="Company" required>
 					</div>
 					<div class="form-group">
@@ -104,7 +108,7 @@
 						</div>
 						<div class="form-row form-row-2">
 							<select name="SEXO">
-							    <option value="0">Sexo</option>
+							    <option value="">Sexo</option>
 							    <option value="1">Masculino</option>
 							    <option value="2">Femenino</option>
 							    <option value="4">Outros</option>
@@ -116,12 +120,13 @@
 					</div>
 					<div class="form-row">
 						<select name="ESTADO_CIVIL">
-						    <option value="0">Estado Civil</option>
-						    <option value="1">Solteiro</option>
-						    <option value="2">Casado</option>
-						    <option value="3">Viuvo</option>
-						    <option value="4">Divorciado</option>
-						    <option value="5">Separado</option>
+						    <option value="">Estado Civil</option>
+						    <option value="3">Solteiro</option>
+						    <option value="0">Casado</option>
+						    <option value="5">Viuvo</option>
+						    <option value="1">Divorciado</option>
+						    <option value="4">Separado</option>
+							<option value="2">Empresa</option>
 						    <!-- <option value="3">Suica</option> -->
 						</select>
 						<span class="select-btn">
@@ -157,9 +162,11 @@
 					<div class="form-group">
 						<div class="form-row form-row-1">
 							<select name="PAIS">
-								<option value="0">Pais</option>
-								<option value="1">Mocambique</option>
-								<option value="2">Outro</option>
+								<option value="">Pais</option>
+								<option value="2">Mocambique</option>
+								<option value="1">Malawi</option>
+								<option value="3">Sao Tome e Principe</option>
+								<option value="4">Outro</option>
 								<!-- <option value="3">Suica</option> -->
 							</select>
 							<span class="select-btn">
@@ -169,11 +176,16 @@
 
 						<div class="form-row form-row-2">
 							<select name="PROVINCIA">
-								<option value="0">Provincia</option>
-								<option value="1">Maputo</option>
-								<option value="2">Gaza</option>
-								<option value="3">Inhambane</option>
-								<!-- <option value="3">Suica</option> -->
+								<option value="">Provincia</option>
+								<option value="3">Maputo Cidade</option>
+								<option value="4">Maputo Provincia</option>
+								<option value="0">Gaza</option>
+								<option value="1">Inhambane</option>
+								<option value="6">Sofala</option>
+								<option value="7">Tete</option>
+								<option value="5">Nampula</option>
+								<option value="2">Manica</option>
+								<option value="8">Zambezia</option>
 							</select>
 							<span class="select-btn">
 								<i class="zmdi zmdi-chevron-down"></i>
@@ -181,28 +193,11 @@
 						</div>
 					</div>					
 					<div class="form-group">
-						<div class="form-row form-row-1">
-							<select name="HABILITACOES">
-								<option value="0">Habilitacoes</option>
-								<option value="1">	Sem Escolaridade</option>
-								<option value="2">	Ensino Primário</option>
-								<option value="3">	Ensino Secundário</option>
-								<option value="4">	Pré-Universitário</option>
-								<option value="5">	Bacharel</option>
-								<option value="6">	Licenciado</option>
-								<option value="7">	Doutorado</option>
-								<option value="8">	Nenhum</option>
-								<option value="9">	12</option>
-								<option value="10">	Mestrado</option>
-							</select>
-							<span class="select-btn">
-								<i class="zmdi zmdi-chevron-down"></i>
-						  </span>
-						</div>
+						
 
-						<div class="form-row form-row-2">
+						<div class="form-row form-row-1">
 							<select name="PROFISSAO">
-								<option value="0">Profissao</option>
+								<option value="">Profissao</option>
 								<option value="1">Academico</option>
                                 <option value="2">Gerente</option>
                                 <option value="3">Comerciante</option>
@@ -274,12 +269,60 @@
 								<i class="zmdi zmdi-chevron-down"></i>
 						  </span>
 						</div>
-
+						<div class="form-row form-row-2">
+							<select name="CATEGORIA">
+								<option value="">Categoria</option>
+							<option value="13">TECNICO SUPERIOR</option>
+							<option value="12">TECNICO</option>
+							<option value="7">GESTOR</option>
+							<option value="4">CHEFE</option>
+							<option value="5">DIRECTOR</option>
+							<option value="2">ASSISTENTE ADMINISTRACTIVO </option>
+							<option value="10">SERVENTE</option>
+							<option value="9">SECRETARIO</option>
+							<option value="15">VIGILANTE</option>
+							<option value="14">VENDEDOR</option>
+							<option value="6">GERENTE</option>
+							<option value="11">SIMPLES</option>
+							<option value="8">OPERARIO</option>
+							<option value="3">CAIXA</option>
+							<option value="0">ACESSOR</option>
+							<option value="1">APRESENTADOR DE TV.</option>
+							</select>
+							<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						  </span>
+						</div>
 
 					</div>
-							<div class="form-row ">
+					<div class="form-row">
+						<input type="number" name="RENDAMENSAL" class="zip" id="zip" placeholder="RENDA MENSAL" required>
+					</div>
+					<div class="form-group">
+						
+						<div class="form-row form-row-1">
+							<select name="HABILITACOES">
+								<option value=""  >Habilitacoes</option>
+								<option value="1">Sem Escolaridade</option>
+								<option value="2">Ensino Primário</option>
+								<option value="3">Ensino Secundário</option>
+								<option value="4">Pré-Universitário</option>
+								<option value="5">Bacharel</option>
+								<option value="6">Licenciado</option>
+								<option value="7">Doutorado</option>
+								<option value="8">Nenhum</option>
+								<option value="9">12</option>
+								<option value="10">Mestrado</option>
+							</select>
+							<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						  </span>
+						</div>
+
+
+						<div class="form-row form-row-2">
 							<select name="GRADUADO">
-								<option value="">Graduado</option>
+								<option value="" >Graduado</option>
 								<option value="1">Sim</option>
 								<option value="0">Nao</option>
 								<!-- <option value="3">Suica</option> -->
@@ -288,6 +331,9 @@
 								<i class="zmdi zmdi-chevron-down"></i>
 						  </span>
 						</div>
+					</div>
+					
+					
 					<!-- <div class="form-row">
 						<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
 					</div> -->
@@ -300,7 +346,7 @@
 					</div> -->
 
 					<div class="form-row-last">
-						<!-- <input type="submit" name="register" class="register" value="PREDIZER"> -->
+						<!-- <input type="submit" name="register" class="register" value="Predict"> -->
 						<button type="submit" class="register">Predict</button>
 					</div>
 
@@ -308,6 +354,6 @@
 			</form>
 		</div>
 	</div>
-    {{prediction_text}}
+    
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
