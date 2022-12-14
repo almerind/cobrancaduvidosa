@@ -15,10 +15,10 @@ app=Flask(__name__)
 #     scalar = pickle.load(k)
 
 
-with open('LgtRModel.pkl', 'rb') as f:
+with open('LgtRModel1.pkl', 'rb') as f:
     regmodel = pickle.load(f)
 
-with open('scalerLEC.pkl', 'rb') as k:
+with open('scalerLEC1.pkl', 'rb') as k:
     scalar = pickle.load(k)
 
 @app.route('/')
@@ -39,26 +39,24 @@ def predict_api():
 @app.route('/predict', methods=['POST']) 
 def predict():
     data = [float(x) for x in request.form.values()]
-    CODIGOCLIENTE_1 = data[0]
-    MONTANTE = data[1]
-    TAXA_JUROS = data[2]/100
-    PRAZOC = data[3]
-    TIPOCREDITO = data[4]
-    TIPOCLIENTE = data[5]
-    DESPESAS = data[6]
+    MONTANTE = data[0]
+    TAXA_JUROS = data[1]/100
+    PRAZOC = data[2]
+    TIPOCREDITO = data[3]
+    TIPOCLIENTE = data[4]
+    DESPESAS = data[5]
 
-    ANOSIDADE = data[7]
-    GENERO = data[8]
-    ESTADOCIVIL = data[9]
-    PAIS = data[10]
-    PROVINCIA = data[11]
-    TRABALHO = data[12]
-    CATEGORIA = data[13]
-    SALARIO = data[14]
-    ESCOLA = data[15]
-    LICENCIADO = data[16]
+    ANOSIDADE = data[6]
+    GENERO = data[7]
+    ESTADOCIVIL = data[8]
+    PAIS = data[9]
+    PROVINCIA = data[10]
+    TRABALHO = data[11]
+    CATEGORIA = data[12]
+    SALARIO = data[13]
+    ESCOLA = data[14]
+    LICENCIADO = data[15]
     
-    CODIGOCLIENTE = CODIGOCLIENTE_1
     NR_PRESTACOES                  = PRAZOC
     NR_PREST_PAGAS_ATRASO          = 0
     NR_PREST_PAGAS_SEM_ATRASO      = 0
@@ -76,7 +74,7 @@ def predict():
 
     CAPITAL = MONTANTE/data[2]
     VALORJUROS = 0
-    if data[3] == 1 :
+    if TIPOCREDITO == 1 :
         VALORJUROS = (TAXA_JUROS/12)*MONTANTE
     else:
         VALORJUROS = TAXA_JUROS*MONTANTE
@@ -98,14 +96,14 @@ def predict():
     TIPOCLIENTE_1                  = TIPOCREDITO
     ESTADOCIVIL_1 = ESTADOCIVIL
     
+    dados = [NR_PRESTACOES, NR_PREST_PAGAS_ATRASO, NR_PREST_PAGAS_SEM_ATRASO,
+             NR_PREST_NAOPAGAS_ATRASO, NR_PREST_NAO_PAGAS_SEM_ATRASO, PRAZO,
+             CAPACIDADEENDIVIDAMENTO, VALORCREDITO, VALORPRESTACAO, IDADE,
+             PROFISSAO, RENDAMENSAL, RENDAANUAL, HABILITACOES, SEXO,
+             GRADUADO, TIPOCREDITO_1, PAIS_1, PROVINCIA_1,
+             CATEGORIAPROFISSIONAL_1, TIPOCLIENTE_1, ESTADOCIVIL_1]
 
-    dados = [ CODIGOCLIENTE, NR_PRESTACOES, NR_PREST_PAGAS_ATRASO,
-       NR_PREST_PAGAS_SEM_ATRASO, NR_PREST_NAOPAGAS_ATRASO,
-       NR_PREST_NAO_PAGAS_SEM_ATRASO, PRAZO, CAPACIDADEENDIVIDAMENTO,
-       VALORCREDITO, VALORPRESTACAO, IDADE, PROFISSAO, RENDAMENSAL,
-       RENDAANUAL, HABILITACOES, SEXO, GRADUADO, TIPOCREDITO_1,
-       PAIS_1, PROVINCIA_1, CATEGORIAPROFISSIONAL_1, TIPOCLIENTE_1,
-       ESTADOCIVIL_1]
+
     final_input=scalar.transform(np.array(dados).reshape(1,-1))
     print(final_input)
     output = regmodel.predict(final_input)[0]
