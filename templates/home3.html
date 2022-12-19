@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css') }}">
     
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://code.jquery.com/jquery-3.6.2.min.js">
 </head>
 <body class="form-v10">
 	<div class="page-content">
@@ -33,12 +34,27 @@
 					</div>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<input type="number" name="PRAZO" id="PRAZO" class="input-text" placeholder="PRAZO DO CREDITO" required>
+							<select name="PRAZO" required>
+								<option class="option"  value="">Prazo</option>
+								<option class="option" value="1">1 Mes</option>
+								<option class="option" value="2">2 Meses</option>
+								<option class="option" value="3">3 Meses</option>
+								<option class="option" value="4">6 Meses</option>
+								<option class="option" value="5">5 Meses</option>
+								<option class="option" value="6">6 Meses</option>
+								<option class="option" value="12">1 Ano</option>
+								<option class="option" value="24">2 Anos</option>
+								<option class="option" value="36">3 Anos</option>
+							</select>
+							<span class="select-btn">
+								  <i class="zmdi zmdi-chevron-down"></i>
+							</span>
+							<!-- <input type="number" name="PRAZO" id="PRAZO" class="input-text" placeholder="PRAZO DO CREDITO" required> -->
 						</div>
 					</div>
 
 					<div class="form-row">
-						<select name="TIPO_CREDITO">
+						<select name="TIPO_CREDITO" required>
 						    <option class="option"  value="2">Tipo de Credito</option>
 						    <option class="option" value="0">Credja</option>
 						    <option class="option" value="1">Credito Consumo</option>
@@ -50,7 +66,7 @@
 					<!-- <label>Tipo de Cliente</label> -->
 					<div class="form-row">
 						
-						<select name="TIPO_CLIENTE">
+						<select name="TIPO_CLIENTE" required>
 						    <option class="option" value="">Tipo de Cliente</option>
 						    <option class="option" value="1">Singular</option>
 						    <option class="option" value="0">Empresa</option>
@@ -62,11 +78,36 @@
 
 
 					<div class="form-row">
-						<input type="number" name="DESPESAS" class="zip" id="zip" placeholder="DESPESAS" value="0" required>
+						<input type="number" name="DESPESAS" class="zip" id="zip" placeholder="DESPESAS"  required>
 					</div>
-					
+					<div class="form-row"><div class="form-group">
+						<div class="form-row form-row-1"></div> </div></div>
+						<div class="form-row"><div class="form-group">
+							<div class="form-row form-row-1"></div> </div></div>
+					<div class="form-row"> </div>
+					<div class="form-row"> </div>
+
+
 					 <div class="form-row">
-						{{prediction_text}}
+				<script>
+					$(function(){
+							$('#predicao').change(function()
+							{
+								alert($(this).value());
+							});
+					});
+				</script>
+
+
+						
+						<div class="form-group">
+							<div class="form-row form-row-1 aprovado">
+								Aprovado
+							</div>
+							<div class="form-row form-row-2 reprovado">
+							Reprovado
+							</div>
+						</div>
 						<!-- <span class="select-btn">
 						  	<i class="zmdi zmdi-chevron-down"></i>
 						</span> -->
@@ -104,7 +145,7 @@
 							<input type="number" name="IDADE" class="zip" id="zip" placeholder="Idade" required>
 						</div>
 						<div class="form-row form-row-2">
-							<select name="SEXO">
+							<select name="SEXO" required>
 							    <option value="">Sexo</option>
 							    <option value="1">Masculino</option>
 							    <option value="2">Femenino</option>
@@ -116,7 +157,7 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<select name="ESTADO_CIVIL">
+						<select name="ESTADO_CIVIL" required>
 						    <option value="">Estado Civil</option>
 						    <option value="3">Solteiro</option>
 						    <option value="0">Casado</option>
@@ -133,7 +174,7 @@
 
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<select name="PAIS">
+							<select name="PAIS" required>
 								<option value="">Pais</option>
 								<option value="2">Mocambique</option>
 								<option value="1">Malawi</option>
@@ -147,7 +188,7 @@
 						</div>
 
 						<div class="form-row form-row-2">
-							<select name="PROVINCIA">
+							<select name="PROVINCIA" required>
 								<option value="">Provincia</option>
 								<option value="3">Maputo Cidade</option>
 								<option value="4">Maputo Provincia</option>
@@ -168,7 +209,7 @@
 						
 
 						<div class="form-row form-row-1">
-							<select name="PROFISSAO">
+							<select name="PROFISSAO" required>
 								<option value="">Profissao</option>
 								<option value="1">Academico</option>
                                 <option value="2">Gerente</option>
@@ -242,7 +283,7 @@
 						  </span>
 						</div>
 						<div class="form-row form-row-2">
-							<select name="CATEGORIA">
+							<select name="CATEGORIA" required>
 								<option value="">Categoria</option>
 							<option value="13">TECNICO SUPERIOR</option>
 							<option value="12">TECNICO</option>
@@ -273,7 +314,7 @@
 					<div class="form-group">
 						
 						<div class="form-row form-row-1">
-							<select name="HABILITACOES">
+							<select name="HABILITACOES" required>
 								<option value=""  >Habilitacoes</option>
 								<option value="1">Sem Escolaridade</option>
 								<option value="2">Ensino Primário</option>
@@ -293,7 +334,7 @@
 
 
 						<div class="form-row form-row-2">
-							<select name="GRADUADO">
+							<select name="GRADUADO" required>
 								<option value="" >Graduado</option>
 								<option value="1">Sim</option>
 								<option value="0">Nao</option>
@@ -324,6 +365,7 @@
 
 				</div>
 			</form>
+			<input type="hidden" name="street" class="predicao" id="street" placeholder="Almerindo" value="{{prediction_text}}" visible="false">
 		</div>
 	</div>
     
