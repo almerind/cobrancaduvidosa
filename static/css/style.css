@@ -325,6 +325,15 @@ body {
 	}
 
 }
+
+.aprovado {
+	background-color: rgb(0, 255, 128);
+}
+
+.reprovado{
+	background-color: rgb(255, 72, 0);
+}
+
 @media screen and (max-width: 767px) {
 	.form-v10-content .form-detail {
 		flex-direction:  column;
